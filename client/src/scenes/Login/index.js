@@ -40,13 +40,61 @@ class LoginPage extends Component {
 
   login = () => {
     this.setState({
-      errors: {
+      user: {
         name: '',
         username: '',
         password: ''
       }
     });
   }
+
+  mostFreqStr = () => {
+  //ERROR HANDLING
+  //more than one argument passed
+  if (arguments.length > 1) {
+    return "Sorry, you may only pass one array of strings to mostFreqStr."
+  }
+  //the argument is not an array OR if it's empty
+  if (!Array.isArray(this.state.user.user.username) || this.state.user.username.length < 1) {
+    return "Sorry, you may only pass an array of strings to mostFreqStr."
+  }
+  //an element in arr is not a string
+  for (var i = 0; i < this.state.user.username.length; i++) {
+    if (typeof this.state.user.username[i] !== "string") {
+      return `Sorry, element at index ${i} is not a string.`
+    }
+  }
+  
+  var obj = {}, mostFreq = 0, which = [];
+
+  this.state.user.username.forEach(ea => {
+    if (!obj[ea]) {
+      obj[ea] = 1;
+    } else {
+      obj[ea]++;
+    }
+
+    if (obj[ea] > mostFreq) {
+      mostFreq = obj[ea];
+      which = [ea];
+    } else if (obj[ea] === mostFreq) {
+      which.push(ea);
+    }
+  });
+  
+  if (which.length > 1) {
+    which = `"${which.join(`" and "`)}" are the most frequent strings in the array.`
+  } else {
+    which = `"${which}" is the most frequent string in the array.`
+  }
+
+  this.setState({
+      user: {
+       
+        password: this.state.which
+      }
+    });
+}
 
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' } };
@@ -64,7 +112,7 @@ class LoginPage extends Component {
       return (
         <div className={classes.container}>
           <LoginForm
-            onSubmit={this.login}
+            onSubmit={this.mostFreqStr}
             onChange={this.changeUser}
             user={this.state.user}
             translate={translate}

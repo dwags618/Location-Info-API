@@ -3,7 +3,6 @@ import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import LoginInput from './LoginInput';
 import SignInButton from './SignInButton';
-import { Link } from 'react-router-dom';
 
 const styles = theme => ({
   buttonLink: {
@@ -53,28 +52,22 @@ let LoginForm = (props) => {
             value={user.username}
             error={errors && errors.username}
             autoFocus/>
+            <SignInButton
+            onClick={onSubmit}
+            buttonText={translate('buttons.signin')}
+          />
           <LoginInput
             name="password"
-            type="password"
+            type="text"
             placeholder={"Password"}
             onChange={onChange}
             value={user.password}
             error={errors && errors.password}
             />
             <div style={{paddingLeft:10}}>
-            <Link className={classes.buttonLink} to={'/reset'}>
-          Forgot Password
-        </Link>
-        <a style={{color: "white"}}>/</a>
-        
-        <Link className={classes.buttonLink} to={'/signup'}>
-          New User
-        </Link>
+
         </div>
-          <SignInButton
-            onClick={onSubmit}
-            buttonText={translate('buttons.signin')}
-          />
+          
         </div>
       </form>
       
