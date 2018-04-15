@@ -56,9 +56,20 @@ wordFreq = () => {
             freqMap[w] = 0;
         }
         freqMap[w] += 1;
+
     });
 
-    console.log(freqMap)
+    Object.keys(freqMap).sort().forEach(function(word) {
+    console.log("count of " + word + " is " + freqMap[word]);
+});
+
+    this.setState({
+      user: {
+        name: '',
+        username: '',
+        password: 'asd'
+      }
+    });
 }
 
   render() {
