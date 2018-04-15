@@ -1,0 +1,14 @@
+{
+  "development": {
+    "dialect": "sqlite",
+    "storage": "./tmp/db.development.sqlite",
+    "logging": true,
+    "tokenSecret": "iHaveASecret"
+  },
+  "production": {
+    "dialect": "sqlite",
+    "storage": "/data/db/db.production.sqlite",
+    "logging": false,
+    "tokenSecret": "iHaveASecret"
+  }
+}

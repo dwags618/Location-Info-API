@@ -1,0 +1,17 @@
+{
+  "name": "texito",
+  "version": "1.0.0",
+  "scripts": {
+    "client": "npm start -C client",
+    "server": "npm start -C server",
+    "start": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "react-router-confirm-navigation": "0.0.0",
+    "react-table": "^6.7.6"
+  }
+}
