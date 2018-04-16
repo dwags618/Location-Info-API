@@ -30,7 +30,7 @@ const styles = theme => ({
 });
 
 let WordForm = (props) => {
-  const { classes, translate, onChange, onSubmit, input, output } = props;
+  const { classes, translate, onChange, onSubmit, user, errors } = props;
 
   return (
     <div>
@@ -40,28 +40,39 @@ let WordForm = (props) => {
         autoComplete="off"
       >
         <div style={{paddingTop:60}}>
+         
           <WordInput
-            name="input"
+            name="username"
             type="text"
-            placeholder={translate('login-page.username-text')}
+            placeholder={translate('word-page.text')}
             onChange={onChange}
-            value={input}
+            value={user.username}
+            error={errors && errors.username}
             autoFocus/>
             <CalculateButton
             onClick={onSubmit}
-            buttonText={translate('buttons.signin')}
+            buttonText={translate('buttons.calculate')}
           />
           <WordInput
-            name="output"
+            name="password"
             type="text"
-            
             onChange={onChange}
-            value={output}
+            value={user.password}
+            error={errors && errors.password}
             />
             <div style={{paddingLeft:10}}>
+            
+        
+        
+        
         </div>
+          
         </div>
       </form>
+      
+        
+        
+
     </div>
   );
 };

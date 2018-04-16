@@ -1,17 +1,10 @@
 {
   
-  "login-page": {
-    "title": ["Sign In"],
-    "name-text": ["Name (First, Last)"],
-    "username-text": ["Username"],
-    "password-text": ["Password (Min. 8 characters)"]
+  "word-page": {
+    "text": ["Enter string here"]
   },
 
   "buttons": {
-    "next": ["Next"],
-    "back": ["Back"],
-    "start": ["Start"],
-    "signin": ["Sign In"],
-    "logout": ["Logout"]
+    "calculate": ["Calculate"]
   }
 }
