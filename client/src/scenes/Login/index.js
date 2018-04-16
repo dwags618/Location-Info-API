@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { Redirect, withRouter } from 'react-router-dom';
 import { setTitle } from '../../redux/navigation';
 import LoginForm from './components/LoginForm';
-var gramophone = require("gramophone")
 
 const styles = theme => ({
   container: {
@@ -50,28 +49,42 @@ class LoginPage extends Component {
   }
 
 wordFreq = () => {
-    var wordCount = this.state.user.username.split(" ").length;
+  
     var phraseCount = 0;
     var phrase = [];
-   
-    for(var firstWord=0; firstWord < wordCount + 1; firstWord++)
+    var hello =0;
+
+    var sentence = [];
+    sentence = this.state.user.username.split(". ");
+    console.log(sentence[0])
+    var sentenceCount = sentence.length;
+    console.log(sentenceCount)
+
+    var sentenceWordCount
+
+    for(var count = 0; count < sentenceCount; count++)
     {
-      var secondWord = firstWord +3;
-      while( secondWord < wordCount +1)
+      sentenceWordCount = sentence[count].split(" ").length
+      console.log(sentenceWordCount)
+      for(var firstWord=0; firstWord < sentenceWordCount + 1; firstWord++)
       {
-        var words = this.state.user.username.split(/\s+/).slice(firstWord,secondWord).join(" ");
-        phrase[phraseCount] = words;
-        secondWord++;
-        phraseCount++;
+        var secondWord = firstWord +3;
+        while( secondWord < sentenceWordCount +1)
+        {
+          
+          hello=sentence[count]
+          console.log("hello")
+          var words = hello.split(/\s+/).slice(firstWord,secondWord).join(" ");
+          words = words.replace(/\./g,'')
+          words = words.toLowerCase()
+          phrase[phraseCount] = words;
+          secondWord++;
+          phraseCount++;
+        }
       }
     }
-
+  
     console.log(phrase)
-    
-    var freqMap = {};
-    console.log(wordCount);
-
-    console.log(gramophone.extract('beep and beep and beep bop boop and foo and foo bar', {ngrams: [2, 3]}))
     
 
     this.setState({
@@ -84,7 +97,6 @@ wordFreq = () => {
 }
 
   render() {
-        console.log(gramophone.extract('beep and beep and beep bop boop and foo and foo bar', {ngrams: [2, 3]}))
 
     const { from } = this.props.location.state || { from: { pathname: '/' } };
     const { redirectToReferrer } = this.state;

@@ -3,7 +3,6 @@ import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import LoginInput from './LoginInput';
 import SignInButton from './SignInButton';
-import { Link } from 'react-router-dom';
 
 const styles = theme => ({
   buttonLink: {
