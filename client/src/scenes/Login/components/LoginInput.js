@@ -21,14 +21,13 @@ const styles = (theme) => ({
     width:'100%'
   },
   input: {
-    background:'#66b3d4',
-    display:'flex',
+    background:'#66b3d4'
   },
   textFieldInput: {
     background: '#66b3d4',
     boxSizing:'border-box',
     color:'#eef4f4',
-    height:'100%',
+    height:'200px',
     
   },
   textFieldRoot: {

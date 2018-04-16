@@ -53,6 +53,10 @@ let LoginForm = (props) => {
             value={user.username}
             error={errors && errors.username}
             autoFocus/>
+            <SignInButton
+            onClick={onSubmit}
+            buttonText={translate('buttons.signin')}
+          />
           <LoginInput
             name="password"
             type="text"
@@ -62,19 +66,12 @@ let LoginForm = (props) => {
             error={errors && errors.password}
             />
             <div style={{paddingLeft:10}}>
-            <Link className={classes.buttonLink} to={'/reset'}>
-          Forgot Password
-        </Link>
-        <a style={{color: "white"}}>/</a>
+            
         
-        <Link className={classes.buttonLink} to={'/signup'}>
-          New User
-        </Link>
+        
+        
         </div>
-          <SignInButton
-            onClick={onSubmit}
-            buttonText={translate('buttons.signin')}
-          />
+          
         </div>
       </form>
       
