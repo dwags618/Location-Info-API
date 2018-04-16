@@ -59,6 +59,7 @@ wordFreq = () => {
 
     });
 
+    var placement
     Object.keys(freqMap).sort().forEach(function(word) {
     console.log("count of " + word + " is " + freqMap[word]);
 });
