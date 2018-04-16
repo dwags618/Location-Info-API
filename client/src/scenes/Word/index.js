@@ -4,7 +4,7 @@ import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 import { connect } from 'react-redux';
 import { Redirect, withRouter } from 'react-router-dom';
 import { setTitle } from '../../redux/navigation';
-import LoginForm from './components/LoginForm';
+import WordForm from './components/WordForm';
 
 const styles = theme => ({
   container: {
@@ -13,12 +13,11 @@ const styles = theme => ({
   }
 })
 
-class LoginPage extends Component {
+class WordPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      redirectToReferrer: false,
       user: {
         username: '',
         password: ''
@@ -38,28 +37,18 @@ class LoginPage extends Component {
     this.setState({user});
   }
 
-  login = () => {
-    this.setState({
-      user: {
-        name: '',
-        username: '',
-        password: ''
-      }
-    });
-  }
-
 wordFreq = () => {
   
     var phraseCount = 0;
     var phrase = [];
-    var hello =0;
+    var sentenceArray =0;
 
     var sentence = [];
     sentence = this.state.user.username.split(". ");
     console.log(sentence[0])
     var sentenceCount = sentence.length;
     console.log(sentenceCount)
-
+    var freqMap = {};
     var sentenceWordCount
 
     for(var count = 0; count < sentenceCount; count++)
@@ -72,10 +61,10 @@ wordFreq = () => {
         while( secondWord < sentenceWordCount +1)
         {
           
-          hello=sentence[count]
-          console.log("hello")
-          var words = hello.split(/\s+/).slice(firstWord,secondWord).join(" ");
+          sentenceArray=sentence[count]
+          var words = sentenceArray.split(/\s+/).slice(firstWord,secondWord).join(" ");
           words = words.replace(/\./g,'')
+          words = words.replace(/,/g,'')
           words = words.toLowerCase()
           phrase[phraseCount] = words;
           secondWord++;
@@ -83,6 +72,21 @@ wordFreq = () => {
         }
       }
     }
+
+    phrase.forEach(function(w) {
+        if (!freqMap[w]) {
+            freqMap[w] = 0;
+        }
+        freqMap[w] += 1;
+
+    });
+
+    Object.keys(freqMap).sort().forEach(function(word) {
+      if(freqMap[word] > 1)
+      {
+    console.log("count of " + word + " is " + freqMap[word]);
+  }
+});
   
     console.log(phrase)
     
@@ -112,13 +116,11 @@ wordFreq = () => {
 
       return (
         <div className={classes.container}>
-          <LoginForm
+          <WordForm
             onSubmit={this.wordFreq}
             onChange={this.changeUser}
             user={this.state.user}
             translate={translate}
-            errors={this.state.errors}
-            message={this.state.message}
           />
       </div>
       );
@@ -144,4 +146,4 @@ const mapDispatchToProps = dispatch => {
 export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(withStyles(styles)(LoginPage)));
+)(withStyles(styles)(WordPage)));

@@ -32,7 +32,7 @@ const styles = theme => ({
   }
 });
 
-class SignInButton extends React.Component {
+class CalculateButton extends React.Component {
   render() {
     const {classes, buttonText, onClick, isDisabled} = this.props;
 
@@ -49,10 +49,10 @@ class SignInButton extends React.Component {
                 [classes.disabled]: isDisabled
               }
             )
-          }>{buttonText !== undefined ? buttonText : 'Sign In'}</button>
+          }>{buttonText !== undefined ? buttonText : 'Calculate'}</button>
       </div>
     );
   }
 }
 
-export default withStyles(styles)(SignInButton);
+export default withStyles(styles)(CalculateButton);

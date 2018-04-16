@@ -1,8 +1,7 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
-import LoginInput from './LoginInput';
-import SignInButton from './SignInButton';
+import WordInput from './WordInput';
+import CalculateButton from './CalculateButton';
 
 const styles = theme => ({
   buttonLink: {
@@ -30,8 +29,8 @@ const styles = theme => ({
   }
 });
 
-let LoginForm = (props) => {
-  const { classes, translate, onChange, onSubmit, user, errors, message } = props;
+let WordForm = (props) => {
+  const { classes, translate, onChange, onSubmit, input, output } = props;
 
   return (
     <div>
@@ -41,44 +40,30 @@ let LoginForm = (props) => {
         autoComplete="off"
       >
         <div style={{paddingTop:60}}>
-          <Typography variant="body2" style={{color:'white'}}>
-            {message}
-          </Typography>
-          <LoginInput
-            name="username"
+          <WordInput
+            name="input"
             type="text"
             placeholder={translate('login-page.username-text')}
             onChange={onChange}
-            value={user.username}
-            error={errors && errors.username}
+            value={input}
             autoFocus/>
-            <SignInButton
+            <CalculateButton
             onClick={onSubmit}
             buttonText={translate('buttons.signin')}
           />
-          <LoginInput
-            name="password"
+          <WordInput
+            name="output"
             type="text"
-            placeholder={"Password"}
+            
             onChange={onChange}
-            value={user.password}
-            error={errors && errors.password}
+            value={output}
             />
             <div style={{paddingLeft:10}}>
-            
-        
-        
-        
         </div>
-          
         </div>
       </form>
-      
-        
-        
-
     </div>
   );
 };
 
-export default withStyles(styles)(LoginForm);
+export default withStyles(styles)(WordForm);

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import HomePage from '../../../scenes/Home';
-import LoginPage from '../../../scenes/Login'
+import WordPage from '../../../scenes/Word'
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
     (
       <Redirect to={{
-        pathname: '/login',
+        pathname: '/word',
         state: { from: props.location }
       }}/>
     )
@@ -20,7 +20,7 @@ class MainLayout extends Component {
       <Switch>
         <PrivateRoute exact path='/' component={HomePage} />
        
-        <Route path='/login' component={LoginPage} />
+        <Route path='/word' component={WordPage} />
        
         <Redirect from='*' to='/' />
       </Switch>

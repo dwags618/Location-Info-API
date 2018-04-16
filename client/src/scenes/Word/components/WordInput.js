@@ -2,7 +2,6 @@ import React from 'react';
 import {withStyles} from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import Input from 'material-ui/Input';
-import { FormHelperText } from 'material-ui/Form';
 
 const styles = (theme) => ({
   container: {
@@ -41,7 +40,7 @@ const styles = (theme) => ({
   }
 });
 
-const LoginInput = (props) => {
+const WordInput = (props) => {
   const { classes, name, input, label, error, ...custom } = props;
   return (
     <div className={classes.container}>
@@ -62,9 +61,8 @@ const LoginInput = (props) => {
           {...custom}
         />
       </div>
-      {error && <FormHelperText className={classes.helperText}>{error}</FormHelperText>}
     </div>
   );
 };
 
-export default withStyles(styles)(LoginInput);
+export default withStyles(styles)(WordInput);
