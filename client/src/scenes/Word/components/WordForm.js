@@ -9,17 +9,6 @@ const styles = theme => ({
     color: 'white',
     fontFamily: 'Arial'
   },
-  centeredColumnDiv: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column'
-  },
-  centeredColumnDiv2: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
-    paddingTop: 20
-  },
   form: {
     display: 'flex',
     flexWrap: 'wrap',

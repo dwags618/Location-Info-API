@@ -41,16 +41,18 @@ class WordPage extends Component {
       var sentence = [];
       sentence = this.state.user.input.split(". ");
       var sentenceCount = sentence.length;
-      var freqMap = {};
+      var freqMap = [];
+      var frequentPhrases = [];
+      var frequentPhraseMap=[];
+      var commonPhrases=[];
       var sentenceWordCount;
 
       for(var count = 0; count < sentenceCount; count++)
       {
         sentenceWordCount = sentence[count].split(" ").length
-        console.log(sentenceWordCount)
         for(var firstWord=0; firstWord < sentenceWordCount + 1; firstWord++)
         {
-          var secondWord = firstWord +3;
+          var secondWord = firstWord + 3;
 
           while( secondWord < sentenceWordCount +1)
           {
@@ -76,17 +78,34 @@ class WordPage extends Component {
       Object.keys(freqMap).sort().forEach(function(word) {
         if(freqMap[word] > 1)
         {
-          console.log("count of " + word + " is " + freqMap[word]);
+          frequentPhraseMap.push(freqMap[word])
+          frequentPhrases.push(word)
         }
       });
-    
-      console.log(phrase)
-      
+        var duplicate =0;
+        var frequentPhraseCount = frequentPhrases.length
+        for(var count1 = 0; count1 < frequentPhraseCount; count1++)
+        {
+          for(var count2 = 0; count2 < frequentPhraseCount; count2++)
+          {
+            var duplicateCheck = frequentPhrases[count2]
+            if(duplicateCheck.includes(frequentPhrases[count1]))
+            {
+              duplicate++;
+            }
+          }
+          if(duplicate === 1)
+          {
+            commonPhrases.push(frequentPhrases[count1])
+          }
 
+          duplicate = 0;
+        }
+    
       this.setState({
         user: {
-          input: '',
-          output: 'asd'
+          input: this.state.input,
+          output: commonPhrases
         }
       });
   }
