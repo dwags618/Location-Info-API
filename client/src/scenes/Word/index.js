@@ -37,16 +37,16 @@ class WordPage extends Component {
       var phraseCount = 0;
       var phrase = [];
       var sentenceArray =0;
-
       var sentence = [];
       sentence = this.state.user.input.split(". ");
       var sentenceCount = sentence.length;
       var freqMap = [];
       var frequentPhrases = [];
       var frequentPhraseMap=[];
-      var commonPhrases=[];
       var sentenceWordCount;
+      var commonPhrases=[];
 
+      //group every 3 word phrase and store into phrase array
       for(var count = 0; count < sentenceCount; count++)
       {
         sentenceWordCount = sentence[count].split(" ").length
@@ -68,6 +68,7 @@ class WordPage extends Component {
         }
       }
 
+      //count every phrase occurence
       phrase.forEach(function(w) {
           if (!freqMap[w]) {
               freqMap[w] = 0;
@@ -75,6 +76,7 @@ class WordPage extends Component {
           freqMap[w] += 1;
       });
 
+      //if count of a phrase is greater than 1 store in frequentPhrases array
       Object.keys(freqMap).sort().forEach(function(word) {
         if(freqMap[word] > 1)
         {
@@ -82,6 +84,8 @@ class WordPage extends Component {
           frequentPhrases.push(word)
         }
       });
+
+        //omit phrase if it is a subset of another, store most frequent phrases into commonPhrases array
         var duplicate =0;
         var frequentPhraseCount = frequentPhrases.length
         for(var count1 = 0; count1 < frequentPhraseCount; count1++)
@@ -104,7 +108,7 @@ class WordPage extends Component {
     
       this.setState({
         user: {
-          input: this.state.input,
+          input: '',
           output: commonPhrases
         }
       });
