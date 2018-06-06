@@ -9,7 +9,7 @@ const styles = (theme) => ({
     width:'100%'
   },
   helperText: {
-    color: 'white',
+    color: '#000000',
     marginLeft:10,
     fontWeight: 'bold'
   },

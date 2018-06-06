@@ -5,6 +5,7 @@
 import path from 'path';
 import express from 'express';
 import bodyParser from 'body-parser';
+import routes from './src/routes';
 
 var env = process.env.NODE_ENV || 'development';
 
@@ -14,6 +15,8 @@ var app = express();
 app.set('port', (process.env.PORT || 80));
 
 app.use(bodyParser.json({ type: 'application/json' }));
+app.use('/api', routes);
+
 
 if ('production' == env) {
   console.log('In production');

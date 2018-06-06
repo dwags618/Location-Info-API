@@ -1,0 +1,30 @@
+var palette = {
+  red : '#ff5353',
+  redDark : '#e43e3e',
+  errorOrange : '#f7814c',
+  blue : '#344164',
+  blueDark : '#283760',
+  blueLight : '#526490',
+  blueDarkTransparent : 'rgba(40, 55, 96, 0.83)',
+  linkedInBlueDark : '#0077B5',
+  linkedInBlueLight : '#54A4CD',
+  linkedInBlueHover : '#006BA3',
+  green : '#2EBE71',
+  greenDark : '#29AC66',
+  greenLight : '#9FE6BA',
+  yellow : '#FFB200',
+  yellowDark : '#E9A300',
+  yellowLight : '#FCC700',
+  whiteReal : '#FFFFFF',
+  white : '#FAFAF9',
+  whiteDarker : '#F6F6F6',
+  grey : '#3F454A',
+  greyTransparent : 'rgba(45,51,56,0.95)',
+  greyMedium: '#797979',
+  greyLight : '#AEAEAE',
+  greyLightTransparent : 'rgba(174, 174, 174, 0.58)',
+  black : '#000000',
+  realWhite: '#FFFFFF'
+};
+
+module.exports = palette;

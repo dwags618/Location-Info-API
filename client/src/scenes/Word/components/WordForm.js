@@ -38,7 +38,7 @@ let WordForm = (props) => {
             autoFocus/>
             <CalculateButton
             onClick={onSubmit}
-            buttonText={translate('buttons.calculate')}
+            buttonText={translate('buttons.search')}
           />
           <WordInput
             name="output"

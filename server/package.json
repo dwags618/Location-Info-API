@@ -34,6 +34,7 @@
     "jsonwebtoken": "^7.2.1",
     "mkdirp": "^0.5.1",
     "moment": "^2.22.0",
+    "node-fetch": "^2.1.2",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "sequelize": "^4.37.6",
