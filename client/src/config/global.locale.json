@@ -1,7 +1,6 @@
 {
-  
-  "word-page": {
-    "text": ["Enter string here"]
+  "home-page": {
+    "text": ["Enter zip code here"]
   },
 
   "buttons": {

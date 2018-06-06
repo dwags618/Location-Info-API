@@ -32,15 +32,12 @@ class HomePage extends Component {
     this.setState({user});
   }
 
-  wordFreq = () => {
+  searchLocation = () => {
     getElevation()          
     .then(result => result.json())
     .then(data => {
       console.log(data.results[0].elevation)
     });
-
-
-   
   }
 
   render() {
@@ -50,7 +47,7 @@ class HomePage extends Component {
       return (
         <div className={classes.container}>
           <MainForm
-            onSubmit={this.wordFreq}
+            onSubmit={this.searchLocation}
             onChange={this.changeUser}
             user={this.state.user}
             translate={translate}

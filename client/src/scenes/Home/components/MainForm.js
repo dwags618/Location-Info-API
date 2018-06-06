@@ -32,7 +32,7 @@ let MainForm = (props) => {
           <MainInput
             name="input"
             type="text"
-            placeholder={translate('word-page.text')}
+            placeholder={translate('home-page.text')}
             onChange={onChange}
             value={user.input}
             autoFocus/>
