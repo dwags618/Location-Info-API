@@ -1,53 +1,73 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
+import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getTranslate, getActiveLanguage } from 'react-localize-redux';
-import { setTitle } from '../../redux/navigation';
+import WordForm from './components/WordForm';
+import Geocode from "react-geocode";
+import { getElevation } from '../../services/api/matchdetails';
 
-const styles = {
-  page: {
-    paddingBottom: 30
+Geocode.setApiKey("AIzaSyD9cAvlDLIsGj1EEmifL_NEiOS98IFs_Ak");
+
+const styles = theme => ({
+  
+})
+
+class WordPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      user: {
+        input: '',
+        output: ''
+      }
+    }
   }
-}
 
-class HomePage extends React.Component {
-  componentDidMount() {
-    this.props.setTitle(this.props.translate('home-page.title'));
+  changeUser = (event) => {
+    const field = event.target.name;
+    const user = this.state.user;
+    user[field] = event.target.value;
+    this.setState({user});
+  }
+
+  wordFreq = () => {
+    getElevation()          
+    .then(result => result.json())
+    .then(data => {
+      console.log(data.results[0].elevation)
+    });
+
+
+   
   }
 
   render() {
-    const { classes } = this.props;
 
-   
+    const { translate, classes } = this.props;
 
-    return (
-      <div className={classes.page}>
+      return (
+        <div className={classes.container}>
+          <WordForm
+            onSubmit={this.wordFreq}
+            onChange={this.changeUser}
+            user={this.state.user}
+            translate={translate}
+          />
       </div>
-    );
+      );
+    }
   }
-}
+
 
 const mapStateToProps = state => {
   return {
-    trays: state.get('trays'),
     translate: getTranslate(state.get('locale')),
-    currentLangugage: getActiveLanguage(state.get('locale')).code,
-    deviceIsConnected: state.getIn(['connection', 'device_socket', 'isConnected']),
-    serverIsConnected: state.getIn(['connection', 'server_socket', 'isConnected']),
-    errorMessages: state.get('error')
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    setTitle: (title) => {
-      dispatch(setTitle(title));
-    }
+    currentLangugage: getActiveLanguage(state.get('locale')).code
   };
 };
 
 export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withStyles(styles)(HomePage)));
+  mapStateToProps
+)(withStyles(styles)(WordPage)));
