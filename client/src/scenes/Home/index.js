@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import MainForm from './components/MainForm';
 import Geocode from "react-geocode";
-import { getElevation } from '../../services/api/locationdetails';
+import { getElevation, getTimeZone } from '../../services/api/locationdetails';
 
 Geocode.setApiKey("AIzaSyD9cAvlDLIsGj1EEmifL_NEiOS98IFs_Ak");
 
@@ -53,6 +53,12 @@ class HomePage extends Component {
       })
       console.log(data.results[0].elevation)
     });
+
+    getTimeZone(this.state.coordinates)          
+    .then(result => result.json())
+    .then(data => {
+      console.log(data)
+    });
   }
 
   render() {
@@ -67,7 +73,7 @@ class HomePage extends Component {
             user={this.state.user}
             translate={translate}
           />
-      </div>
+        </div>
       );
     }
   }

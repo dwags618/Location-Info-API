@@ -40,7 +40,12 @@ let MainForm = (props) => {
             onClick={onSubmit}
             buttonText={translate('buttons.search')}
           />
-            {user.output}
+          <MainInput
+            name="output"
+            type="text"
+            onChange={onChange}
+            value={user.output}
+            />
         </div>
       </form>
     </div>

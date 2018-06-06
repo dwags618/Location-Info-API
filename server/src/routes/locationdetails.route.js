@@ -21,8 +21,28 @@ console.log(url)
     .catch(badRequest(res));
 }
 
+export const timeZone = (req, res) => {
+  https://maps.googleapis.com/maps/api/timezone/json?location=38.908133,-77.047119&timestamp=1458000000&key=YOUR_API_KEY
+
+console.log(req.body)
+var url = 'https://maps.googleapis.com/maps/api/timezone/json?location=' + req.body.lat + ',' + req.body.lng + 
+          '&timestamp=1458000000&key=AIzaSyBJ3EqnP4kY-eOxSn2B3uOc-tUAaRRES4U'
+console.log(url)
+  fetch(url)
+  .then(res => res.json())
+   .then((json) => {
+      var response = json;
+      
+      console.log(response)
+      return response;
+    })
+    .then(ok(res))
+    .catch(badRequest(res));
+}
+
 const router = new Router();
 
 router.post("/elevation", elevation);
+router.post("/timezone", timeZone);
 
 export default router;

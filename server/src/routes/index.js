@@ -7,6 +7,6 @@ routes.get('/', (req, res) => {
   res.status(200).json({ message: 'Connected!' });
 });
 
-routes.use('/locationdetails', locationdetails);
+routes.use('/location', locationdetails);
 
 export default routes;
