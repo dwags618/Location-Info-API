@@ -22,7 +22,6 @@ console.log(url)
 }
 
 export const timeZone = (req, res) => {
-  https://maps.googleapis.com/maps/api/timezone/json?location=38.908133,-77.047119&timestamp=1458000000&key=YOUR_API_KEY
 
 console.log(req.body)
 var url = 'https://maps.googleapis.com/maps/api/timezone/json?location=' + req.body.lat + ',' + req.body.lng + 

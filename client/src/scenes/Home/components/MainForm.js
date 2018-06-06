@@ -44,7 +44,7 @@ let MainForm = (props) => {
             name="output"
             type="text"
             onChange={onChange}
-            value={user.output}
+            value={user.elevation}
             />
         </div>
       </form>

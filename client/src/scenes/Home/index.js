@@ -20,7 +20,8 @@ class HomePage extends Component {
     this.state = {
       user: {
         input: '',
-        output: ''
+        output: '',
+        elevation: ''
       },
       coordinates: ''
     }
@@ -45,11 +46,14 @@ class HomePage extends Component {
         console.error(error);
       }
     );
+
+    if(this.state.coordinates !== '')
+    {
     getElevation(this.state.coordinates)          
     .then(result => result.json())
     .then(data => {
       this.setState({user: 
-        {output: data.results[0].elevation}
+        {elevation: data.results[0].elevation}
       })
       console.log(data.results[0].elevation)
     });
@@ -57,8 +61,10 @@ class HomePage extends Component {
     getTimeZone(this.state.coordinates)          
     .then(result => result.json())
     .then(data => {
+      
       console.log(data)
     });
+  }
   }
 
   render() {
