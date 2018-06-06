@@ -21,7 +21,8 @@ class HomePage extends Component {
       user: {
         input: '',
         output: ''
-      }
+      },
+      coordinates: ''
     }
   }
 
@@ -33,7 +34,18 @@ class HomePage extends Component {
   }
 
   searchLocation = () => {
-    getElevation()          
+
+    // Get latidude & longitude from address.
+    Geocode.fromAddress(this.state.user.input).then(
+      response => {
+        this.setState({coordinates: response.results[0].geometry.location})
+        console.log(this.state.coordinates);
+      },
+      error => {
+        console.error(error);
+      }
+    );
+    getElevation(this.state.coordinates)          
     .then(result => result.json())
     .then(data => {
       console.log(data.results[0].elevation)

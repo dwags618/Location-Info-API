@@ -5,7 +5,7 @@ import express from 'express';
 import fetch from 'node-fetch';
 
 export const elevation = (req, res) => {
-
+console.log(req.body)
   fetch('https://maps.googleapis.com/maps/api/elevation/json?locations=39.7391536,-104.9847034&key=AIzaSyD9cAvlDLIsGj1EEmifL_NEiOS98IFs_Ak', {
         headers: {'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS', 'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'},
   })
@@ -22,6 +22,6 @@ export const elevation = (req, res) => {
 
 const router = new Router();
 
-router.get("/elevation", elevation);
+router.post("/elevation", elevation);
 
 export default router;
