@@ -14,29 +14,25 @@ const styles = (theme) => ({
     fontWeight: 'bold'
   },
   title: {
-    color:'#ffffff',
+    color:'#000000',
     marginBottom:10,
     textAlign:'center',
     width:'100%'
   },
-  input: {
-    background:'#66b3d4'
-  },
   textFieldInput: {
-    background: '#66b3d4',
+    background: '#FFFFFF',
     boxSizing:'border-box',
-    color:'#eef4f4',
+    color:'#000000',
     height:'46px',
-    
   },
   textFieldRoot: {
     boxSizing:'border-box',
-    background:'#66b3d4',
+    background:'#FFFFFF',
     padding:'6px 10px',
     width:'100%',
     borderWidth:2,
     borderStyle:'solid',
-    borderColor: '#FFFFFF'
+    borderColor: '#000000'
   }
 });
 
@@ -49,7 +45,7 @@ const MainInput = (props) => {
           {label}
         </Typography>
       </div>
-      <div className={classes.input}>
+      <div>
         <Input
           name={name}
           disableUnderline
