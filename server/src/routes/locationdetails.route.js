@@ -39,9 +39,28 @@ console.log(url)
     .catch(badRequest(res));
 }
 
+export const weather = (req, res) => {
+
+console.log(req.body)
+var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + req.body.lat + '&lon=' + req.body.lng +
+          '&APPID=c1af22db1c2deab29c6288c434671629'
+console.log(url)
+  fetch(url)
+  .then(res => res.json())
+   .then((json) => {
+      var response = json;
+      
+      console.log(response)
+      return response;
+    })
+    .then(ok(res))
+    .catch(badRequest(res));
+}
+
 const router = new Router();
 
 router.post("/elevation", elevation);
 router.post("/timezone", timeZone);
+router.post("/weather", weather);
 
 export default router;

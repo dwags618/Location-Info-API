@@ -41,10 +41,16 @@ let MainForm = (props) => {
             buttonText={translate('buttons.search')}
           />
           <MainInput
-            name="output"
+            name="elevation-output"
             type="text"
             onChange={onChange}
             value={user.elevation}
+            />
+          <MainInput
+            name="elevation-output"
+            type="text"
+            onChange={onChange}
+            value={user.timezone}
             />
         </div>
       </form>
