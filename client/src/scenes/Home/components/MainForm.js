@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
-import WordInput from './WordInput';
+import MainInput from './MainInput';
 import CalculateButton from './CalculateButton';
 
 const styles = theme => ({
@@ -18,7 +18,7 @@ const styles = theme => ({
   }
 });
 
-let WordForm = (props) => {
+let MainForm = (props) => {
   const { classes, translate, onChange, onSubmit, user } = props;
 
   return (
@@ -29,7 +29,7 @@ let WordForm = (props) => {
         autoComplete="off"
       >
         <div style={{paddingTop:60}}>
-          <WordInput
+          <MainInput
             name="input"
             type="text"
             placeholder={translate('word-page.text')}
@@ -40,7 +40,7 @@ let WordForm = (props) => {
             onClick={onSubmit}
             buttonText={translate('buttons.search')}
           />
-          <WordInput
+          <MainInput
             name="output"
             type="text"
             onChange={onChange}
@@ -54,4 +54,4 @@ let WordForm = (props) => {
   );
 };
 
-export default withStyles(styles)(WordForm);
+export default withStyles(styles)(MainForm);

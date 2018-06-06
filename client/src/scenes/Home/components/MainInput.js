@@ -40,7 +40,7 @@ const styles = (theme) => ({
   }
 });
 
-const WordInput = (props) => {
+const MainInput = (props) => {
   const { classes, name, input, label, error, ...custom } = props;
   return (
     <div className={classes.container}>
@@ -65,4 +65,4 @@ const WordInput = (props) => {
   );
 };
 
-export default withStyles(styles)(WordInput);
+export default withStyles(styles)(MainInput);

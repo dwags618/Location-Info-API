@@ -3,7 +3,7 @@ import { withStyles } from 'material-ui/styles';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import WordForm from './components/WordForm';
+import MainForm from './components/MainForm';
 import Geocode from "react-geocode";
 import { getElevation } from '../../services/api/matchdetails';
 
@@ -13,7 +13,7 @@ const styles = theme => ({
   
 })
 
-class WordPage extends Component {
+class HomePage extends Component {
   constructor(props) {
     super(props);
 
@@ -49,7 +49,7 @@ class WordPage extends Component {
 
       return (
         <div className={classes.container}>
-          <WordForm
+          <MainForm
             onSubmit={this.wordFreq}
             onChange={this.changeUser}
             user={this.state.user}
@@ -70,4 +70,4 @@ const mapStateToProps = state => {
 
 export default withRouter(connect(
   mapStateToProps
-)(withStyles(styles)(WordPage)));
+)(withStyles(styles)(HomePage)));
