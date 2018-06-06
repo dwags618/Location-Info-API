@@ -9,9 +9,7 @@ console.log(req.body)
 var url = 'https://maps.googleapis.com/maps/api/elevation/json?locations=' + req.body.lat + ',' + req.body.lng + 
           '&key=AIzaSyD9cAvlDLIsGj1EEmifL_NEiOS98IFs_Ak'
 console.log(url)
-  fetch(url, {
-        headers: {'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS', 'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'},
-  })
+  fetch(url)
   .then(res => res.json())
    .then((json) => {
       var response = json;

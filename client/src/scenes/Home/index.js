@@ -48,6 +48,9 @@ class HomePage extends Component {
     getElevation(this.state.coordinates)          
     .then(result => result.json())
     .then(data => {
+      this.setState({user: 
+        {output: data.results[0].elevation}
+      })
       console.log(data.results[0].elevation)
     });
   }
