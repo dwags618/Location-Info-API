@@ -68,15 +68,6 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setTitle: (title) => {
-      dispatch(setTitle(title));
-    }
-  };
-};
-
 export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(withStyles(styles)(WordPage)));
