@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import MainForm from './components/MainForm';
 import Geocode from "react-geocode";
-import { getElevation } from '../../services/api/matchdetails';
+import { getElevation } from '../../services/api/locationdetails';
 
 Geocode.setApiKey("AIzaSyD9cAvlDLIsGj1EEmifL_NEiOS98IFs_Ak");
 

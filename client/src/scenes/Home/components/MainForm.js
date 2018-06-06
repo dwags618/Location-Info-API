@@ -13,7 +13,7 @@ const styles = theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'column',
-    width: 450,
+    width: 200,
     margin: '0 auto',
   }
 });

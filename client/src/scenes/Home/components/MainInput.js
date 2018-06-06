@@ -26,7 +26,7 @@ const styles = (theme) => ({
     background: '#66b3d4',
     boxSizing:'border-box',
     color:'#eef4f4',
-    height:'200px',
+    height:'46px',
     
   },
   textFieldRoot: {
