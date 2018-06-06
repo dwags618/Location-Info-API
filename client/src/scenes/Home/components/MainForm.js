@@ -1,7 +1,7 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import MainInput from './MainInput';
-import CalculateButton from './CalculateButton';
+import SearchButton from './SearchButton';
 
 const styles = theme => ({
   buttonLink: {
@@ -36,7 +36,7 @@ let MainForm = (props) => {
             onChange={onChange}
             value={user.input}
             autoFocus/>
-            <CalculateButton
+            <SearchButton
             onClick={onSubmit}
             buttonText={translate('buttons.search')}
           />
