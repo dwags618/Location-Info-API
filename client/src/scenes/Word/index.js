@@ -3,7 +3,6 @@ import { withStyles } from 'material-ui/styles';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { setTitle } from '../../redux/navigation';
 import WordForm from './components/WordForm';
 import Geocode from "react-geocode";
 import { getElevation } from '../../services/api/matchdetails';
