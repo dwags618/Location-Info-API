@@ -27,7 +27,7 @@ class HomePage extends Component {
         name: ''
       },
       coordinates: ''
-    }
+    };
   }
 
   changeUser = (event) => {
@@ -38,8 +38,6 @@ class HomePage extends Component {
   }
 
   searchLocation = () => {
-
-    // Get latidude & longitude from address.
     Geocode.fromAddress(this.state.user.input).then(
       response => {
         this.setState({coordinates: response.results[0].geometry.location})
@@ -49,8 +47,9 @@ class HomePage extends Component {
         console.error(error);
       }
     );
-
-    if(this.state.coordinates !== '')
+setTimeout(function() {
+  console.log(this.state.name)
+if(this.state.coordinates !== '')
     {
       getElevation(this.state.coordinates)          
       .then(result => result.json())
@@ -81,6 +80,8 @@ class HomePage extends Component {
         console.log(data)
       });
     }
+}.bind(this), 500);
+    
   }
 
   render() {
