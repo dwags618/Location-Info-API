@@ -47,10 +47,22 @@ let MainForm = (props) => {
             value={user.elevation}
             />
           <MainInput
-            name="elevation-output"
+            name="timezone-output"
             type="text"
             onChange={onChange}
             value={user.timezone}
+            />
+          <MainInput
+            name="temperature-output"
+            type="text"
+            onChange={onChange}
+            value={user.temperature}
+            />
+          <MainInput
+            name="name-output"
+            type="text"
+            onChange={onChange}
+            value={user.name}
             />
         </div>
       </form>

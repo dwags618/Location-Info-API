@@ -22,7 +22,9 @@ class HomePage extends Component {
         input: '',
         output: '',
         elevation: '',
-        timezone: ''
+        timezone: '',
+        temperature: '',
+        name: ''
       },
       coordinates: ''
     }
@@ -50,33 +52,35 @@ class HomePage extends Component {
 
     if(this.state.coordinates !== '')
     {
-    getElevation(this.state.coordinates)          
-    .then(result => result.json())
-    .then(data => {
-      this.setState({user: 
-        {elevation: data.results[0].elevation}
-      })
-      console.log(data.results[0].elevation)
-    });
+      getElevation(this.state.coordinates)          
+      .then(result => result.json())
+      .then(data => {
+        this.setState({user: 
+          {elevation: data.results[0].elevation}
+        })
+        console.log(data.results[0].elevation)
+      });
 
-    getTimeZone(this.state.coordinates)          
-    .then(result => result.json())
-    .then(data => {
-      this.setState({user: 
-        {timezone: data.timeZoneName}
-      })
-      console.log(data.timeZoneName)
-    });
+      getTimeZone(this.state.coordinates)          
+      .then(result => result.json())
+      .then(data => {
+        this.setState({user: 
+          {timezone: data.timeZoneName}
+        })
+        console.log(data.timeZoneName)
+      });
 
-    getWeather(this.state.coordinates)          
-    .then(result => result.json())
-    .then(data => {
-      this.setState({user: 
-        {timezone: data.timeZoneName}
-      })
-      console.log(data.timeZoneName)
-    });
-  }
+      getWeather(this.state.coordinates)          
+      .then(result => result.json())
+      .then(data => {
+        this.setState({user: {
+          temperature: (((data.main.temp*9)/5)-459.67),
+          name: data.name
+          }
+        })
+        console.log(data)
+      });
+    }
   }
 
   render() {
