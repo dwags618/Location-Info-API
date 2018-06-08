@@ -22,7 +22,7 @@ const styles = theme => ({
 class HomePage extends Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
       user: {
         input: '',
@@ -90,7 +90,7 @@ class HomePage extends Component {
           <div className={classes.form}>
             At the location {this.state.name}, the temperature is {this.state.temperature}&#8457;, 
             the timezone is {this.state.timezone}, 
-            and the elevation is {this.state.elevation}.
+            and the elevation is {this.state.elevation} meters.
           </div>
         </div>
       );
