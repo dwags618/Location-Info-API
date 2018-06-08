@@ -9,10 +9,6 @@ import { getElevation, getTimeZone, getWeather } from '../../services/api/locati
 
 Geocode.setApiKey("AIzaSyD9cAvlDLIsGj1EEmifL_NEiOS98IFs_Ak");
 
-const styles = theme => ({
-  
-})
-
 class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +34,6 @@ class HomePage extends Component {
   }
 
   searchLocation = () => {
-
     Geocode.fromAddress(this.state.user.input).then(
       response => {
         this.setState({coordinates: response.results[0].geometry.location})
@@ -46,41 +41,36 @@ class HomePage extends Component {
     );
 
     setTimeout(function() {
-      if(this.state.coordinates !== '')
-      {
-        getElevation(this.state.coordinates)          
-        .then(result => result.json())
-        .then(data => {
-          this.setState({user: 
-            {elevation: data.results[0].elevation}
-          })
-        });
+      getElevation(this.state.coordinates)          
+      .then(result => result.json())
+      .then(data => {
+        this.setState({user: 
+          {elevation: data.results[0].elevation}
+        })
+      });
 
-        getTimeZone(this.state.coordinates)          
-        .then(result => result.json())
-        .then(data => {
-          this.setState({user: 
-            {timezone: data.timeZoneName}
-          })
-        });
+      getTimeZone(this.state.coordinates)          
+      .then(result => result.json())
+      .then(data => {
+        this.setState({user: 
+          {timezone: data.timeZoneName}
+        })
+      });
 
-        getWeather(this.state.coordinates)          
-        .then(result => result.json())
-        .then(data => {
-          this.setState({user: {
-            temperature: (((data.main.temp*9)/5)-459.67),
-            name: data.name
-            }
-          })
-        });
-      }
+      getWeather(this.state.coordinates)          
+      .then(result => result.json())
+      .then(data => {
+        this.setState({user: {
+          temperature: (((data.main.temp*9)/5)-459.67),
+          name: data.name
+          }
+        })
+      });
     }.bind(this), 500);
   }
 
   render() {
-
     const { translate, classes } = this.props;
-
       return (
         <div className={classes.container}>
           <MainForm
@@ -93,7 +83,6 @@ class HomePage extends Component {
       );
     }
   }
-
 
 const mapStateToProps = state => {
   return {
