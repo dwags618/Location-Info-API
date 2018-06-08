@@ -9,9 +9,5 @@
   "devDependencies": {
     "concurrently": "^3.5.0"
   },
-  "dependencies": {
-    "jquery": "^3.3.1",
-    "react-router-confirm-navigation": "0.0.0",
-    "react-table": "^6.7.6"
-  }
+  "dependencies": {}
 }
