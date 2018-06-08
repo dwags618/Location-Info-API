@@ -32,7 +32,7 @@ let MainForm = (props) => {
             autoFocus/>
             <SearchButton
             onClick={onSubmit}
-            buttonText={translate('buttons.search')}
+            buttonText={translate('buttons.submit')}
           />
         </div>
       </form>

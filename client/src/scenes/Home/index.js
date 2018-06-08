@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import MainForm from './components/MainForm';
+import InputForm from './components/InputForm';
 import OutputForm from './components/OutputForm';
 import Geocode from "react-geocode";
 import { getElevation, getTimeZone, getWeather } from '../../services/api/locationdetails';
@@ -73,7 +73,7 @@ class HomePage extends Component {
     const { translate } = this.props;
       return (
         <div>
-          <MainForm
+          <InputForm
             onSubmit={this.searchLocation}
             onChange={this.changeUser}
             user={this.state.user}
@@ -83,6 +83,7 @@ class HomePage extends Component {
             onChange={this.changeUser}
             user={this.state.user}
             translate={translate}
+            coordinates={this.state.coordinates}
           />
         </div>
       );

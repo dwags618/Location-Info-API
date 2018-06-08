@@ -49,7 +49,7 @@ class SearchButton extends React.Component {
                 [classes.disabled]: isDisabled
               }
             )
-          }>{buttonText !== undefined ? buttonText : 'Search'}</button>
+          }>{buttonText !== undefined ? buttonText : 'Submit'}</button>
       </div>
     );
   }
