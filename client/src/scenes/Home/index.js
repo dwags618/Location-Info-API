@@ -75,6 +75,8 @@ class HomePage extends Component {
 
   render() {
     const { translate, classes } = this.props;
+    
+    if(this.state.elevation !== '' && this.state.timezone !== '' && this.state.temperature !== '' && this.state.name !== '') {
       return (
         <div>
           <InputForm
@@ -84,14 +86,25 @@ class HomePage extends Component {
             translate={translate}
           />
           <div className={classes.form}>
-            At the location {this.state.name}, the temperature is 
-            {this.state.temperature}, the timezone is {this.state.timezone}, 
-            and the elevation is {this.state.elevation}
+            At the location {this.state.name}, the temperature is {this.state.temperature}, 
+            the timezone is {this.state.timezone}, 
+            and the elevation is {this.state.elevation}.
           </div>
         </div>
       );
     }
+    else {
+      return (
+        <InputForm
+          onSubmit={this.searchLocation}
+          onChange={this.changeUser}
+          user={this.state.user}
+          translate={translate}
+        />
+      );
+    }
   }
+}
 
 const mapStateToProps = state => {
   return {
