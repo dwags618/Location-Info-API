@@ -43,39 +43,41 @@ class HomePage extends Component {
   }
 
   searchLocation = () => {
-    Geocode.fromAddress(this.state.user.input).then(
-      response => {
-        this.setState({coordinates: response.results[0].geometry.location})
-      },
-    );
+    if(this.state.user.input !== '') {
+      Geocode.fromAddress(this.state.user.input).then(
+        response => {
+          this.setState({coordinates: response.results[0].geometry.location})
+        },
+      );
 
-    setTimeout(function() {
-      getElevation(this.state.coordinates)          
-      .then(result => result.json())
-      .then(data => {
-        this.setState({elevation: data.results[0].elevation.toFixed(2)})
-      });
+      setTimeout(function() {
+        getElevation(this.state.coordinates)          
+        .then(result => result.json())
+        .then(data => {
+          this.setState({elevation: data.results[0].elevation.toFixed(2)})
+        });
 
-      getTimeZone(this.state.coordinates)          
-      .then(result => result.json())
-      .then(data => {
-        this.setState({timezone: data.timeZoneName})
-      });
+        getTimeZone(this.state.coordinates)          
+        .then(result => result.json())
+        .then(data => {
+          this.setState({timezone: data.timeZoneName})
+        });
 
-      getWeather(this.state.coordinates)          
-      .then(result => result.json())
-      .then(data => {
-        this.setState({
-          temperature: (((data.main.temp*9)/5)-459.67).toFixed(2),
-          name: data.name
-        })
-      });
-    }.bind(this), 500);
+        getWeather(this.state.coordinates)          
+        .then(result => result.json())
+        .then(data => {
+          this.setState({
+            temperature: (((data.main.temp*9)/5)-459.67).toFixed(2),
+            name: data.name
+          })
+        });
+      }.bind(this), 500);
+    }
   }
 
   render() {
     const { translate, classes } = this.props;
-    
+
     if(this.state.elevation !== '' && this.state.timezone !== '' && this.state.temperature !== '' && this.state.name !== '') {
       return (
         <div>
@@ -86,7 +88,7 @@ class HomePage extends Component {
             translate={translate}
           />
           <div className={classes.form}>
-            At the location {this.state.name}, the temperature is {this.state.temperature}, 
+            At the location {this.state.name}, the temperature is {this.state.temperature}&#8457;, 
             the timezone is {this.state.timezone}, 
             and the elevation is {this.state.elevation}.
           </div>
