@@ -32,7 +32,7 @@ const styles = theme => ({
   }
 });
 
-class SearchButton extends React.Component {
+class SubmitButton extends React.Component {
   render() {
     const {classes, buttonText, onClick, isDisabled} = this.props;
 
@@ -55,4 +55,4 @@ class SearchButton extends React.Component {
   }
 }
 
-export default withStyles(styles)(SearchButton);
+export default withStyles(styles)(SubmitButton);

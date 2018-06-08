@@ -1,7 +1,7 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import MainInput from './MainInput';
-import SearchButton from './SearchButton';
+import SubmitButton from './SubmitButton';
 
 const styles = theme => ({
   form: {
@@ -10,6 +10,7 @@ const styles = theme => ({
     flexDirection: 'column',
     width: 200,
     margin: '0 auto',
+    paddingTop: 60
   }
 });
 
@@ -22,19 +23,17 @@ let MainForm = (props) => {
         className={classes.form}
         autoComplete="off"
       >
-        <div style={{paddingTop:60}}>
-          <MainInput
-            name="input"
-            type="text"
-            placeholder={translate('home-page.text')}
-            onChange={onChange}
-            value={user.input}
-            autoFocus/>
-            <SearchButton
-            onClick={onSubmit}
-            buttonText={translate('buttons.submit')}
-          />
-        </div>
+        <MainInput
+          name="input"
+          type="text"
+          placeholder={translate('home-page.text')}
+          onChange={onChange}
+          value={user.input}
+          autoFocus/>
+          <SubmitButton
+          onClick={onSubmit}
+          buttonText={translate('buttons.submit')}
+        />
       </form>
     </div>
   );
