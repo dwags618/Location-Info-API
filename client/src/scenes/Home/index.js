@@ -3,11 +3,21 @@ import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import InputForm from './components/InputForm';
-import OutputForm from './components/OutputForm';
 import Geocode from "react-geocode";
 import { getElevation, getTimeZone, getWeather } from '../../services/api/locationdetails';
+import { withStyles } from 'material-ui/styles';
 
 Geocode.setApiKey("AIzaSyD9cAvlDLIsGj1EEmifL_NEiOS98IFs_Ak");
+
+const styles = theme => ({
+  form: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'column',
+    width: 400,
+    margin: '0 auto'
+  }
+});
 
 class HomePage extends Component {
   constructor(props) {
@@ -16,13 +26,12 @@ class HomePage extends Component {
     this.state = {
       user: {
         input: '',
-        output: '',
-        elevation: '',
-        timezone: '',
-        temperature: '',
-        name: ''
       },
-      coordinates: ''
+      coordinates: '',
+      elevation: '',
+      timezone: '',
+      temperature: '',
+      name: ''
     };
   }
 
@@ -44,33 +53,28 @@ class HomePage extends Component {
       getElevation(this.state.coordinates)          
       .then(result => result.json())
       .then(data => {
-        this.setState({user: 
-          {elevation: data.results[0].elevation}
-        })
+        this.setState({elevation: data.results[0].elevation.toFixed(2)})
       });
 
       getTimeZone(this.state.coordinates)          
       .then(result => result.json())
       .then(data => {
-        this.setState({user: 
-          {timezone: data.timeZoneName}
-        })
+        this.setState({timezone: data.timeZoneName})
       });
 
       getWeather(this.state.coordinates)          
       .then(result => result.json())
       .then(data => {
-        this.setState({user: {
-          temperature: (((data.main.temp*9)/5)-459.67),
+        this.setState({
+          temperature: (((data.main.temp*9)/5)-459.67).toFixed(2),
           name: data.name
-          }
         })
       });
     }.bind(this), 500);
   }
 
   render() {
-    const { translate } = this.props;
+    const { translate, classes } = this.props;
       return (
         <div>
           <InputForm
@@ -79,12 +83,11 @@ class HomePage extends Component {
             user={this.state.user}
             translate={translate}
           />
-          <OutputForm
-            onChange={this.changeUser}
-            user={this.state.user}
-            translate={translate}
-            coordinates={this.state.coordinates}
-          />
+          <div className={classes.form}>
+            At the location {this.state.name}, the temperature is 
+            {this.state.temperature}, the timezone is {this.state.timezone}, 
+            and the elevation is {this.state.elevation}
+          </div>
         </div>
       );
     }
@@ -99,4 +102,4 @@ const mapStateToProps = state => {
 
 export default withRouter(connect(
   mapStateToProps
-)(HomePage));
+)(withStyles(styles)(HomePage)));
