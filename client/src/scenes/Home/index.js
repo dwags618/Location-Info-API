@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withStyles } from 'material-ui/styles';
 import { getTranslate, getActiveLanguage } from 'react-localize-redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -70,16 +69,14 @@ class HomePage extends Component {
   }
 
   render() {
-    const { translate, classes } = this.props;
+    const { translate } = this.props;
       return (
-        <div className={classes.container}>
-          <MainForm
-            onSubmit={this.searchLocation}
-            onChange={this.changeUser}
-            user={this.state.user}
-            translate={translate}
-          />
-        </div>
+        <MainForm
+          onSubmit={this.searchLocation}
+          onChange={this.changeUser}
+          user={this.state.user}
+          translate={translate}
+        />
       );
     }
   }
@@ -93,4 +90,4 @@ const mapStateToProps = state => {
 
 export default withRouter(connect(
   mapStateToProps
-)(withStyles(styles)(HomePage)));
+)(HomePage));
