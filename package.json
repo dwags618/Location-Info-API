@@ -1,5 +1,5 @@
 {
-  "name": "texito",
+  "name": "Cayuse",
   "version": "1.0.0",
   "scripts": {
     "client": "npm start -C client",
