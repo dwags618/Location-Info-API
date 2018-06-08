@@ -38,50 +38,43 @@ class HomePage extends Component {
   }
 
   searchLocation = () => {
+
     Geocode.fromAddress(this.state.user.input).then(
       response => {
         this.setState({coordinates: response.results[0].geometry.location})
-        console.log(this.state.coordinates);
       },
-      error => {
-        console.error(error);
-      }
     );
-setTimeout(function() {
-  console.log(this.state.name)
-if(this.state.coordinates !== '')
-    {
-      getElevation(this.state.coordinates)          
-      .then(result => result.json())
-      .then(data => {
-        this.setState({user: 
-          {elevation: data.results[0].elevation}
-        })
-        console.log(data.results[0].elevation)
-      });
 
-      getTimeZone(this.state.coordinates)          
-      .then(result => result.json())
-      .then(data => {
-        this.setState({user: 
-          {timezone: data.timeZoneName}
-        })
-        console.log(data.timeZoneName)
-      });
+    setTimeout(function() {
+      if(this.state.coordinates !== '')
+      {
+        getElevation(this.state.coordinates)          
+        .then(result => result.json())
+        .then(data => {
+          this.setState({user: 
+            {elevation: data.results[0].elevation}
+          })
+        });
 
-      getWeather(this.state.coordinates)          
-      .then(result => result.json())
-      .then(data => {
-        this.setState({user: {
-          temperature: (((data.main.temp*9)/5)-459.67),
-          name: data.name
-          }
-        })
-        console.log(data)
-      });
-    }
-}.bind(this), 500);
-    
+        getTimeZone(this.state.coordinates)          
+        .then(result => result.json())
+        .then(data => {
+          this.setState({user: 
+            {timezone: data.timeZoneName}
+          })
+        });
+
+        getWeather(this.state.coordinates)          
+        .then(result => result.json())
+        .then(data => {
+          this.setState({user: {
+            temperature: (((data.main.temp*9)/5)-459.67),
+            name: data.name
+            }
+          })
+        });
+      }
+    }.bind(this), 500);
   }
 
   render() {
