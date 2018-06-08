@@ -4,11 +4,6 @@ import MainInput from './MainInput';
 import SearchButton from './SearchButton';
 
 const styles = theme => ({
-  buttonLink: {
-    textDecoration: 'none',
-    color: 'white',
-    fontFamily: 'Arial'
-  },
   form: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -20,7 +15,6 @@ const styles = theme => ({
 
 let MainForm = (props) => {
   const { classes, translate, onChange, onSubmit, user } = props;
-
   return (
     <div>
       <form
@@ -40,30 +34,6 @@ let MainForm = (props) => {
             onClick={onSubmit}
             buttonText={translate('buttons.search')}
           />
-          <MainInput
-            name="elevation-output"
-            type="text"
-            onChange={onChange}
-            value={user.elevation}
-            />
-          <MainInput
-            name="timezone-output"
-            type="text"
-            onChange={onChange}
-            value={user.timezone}
-            />
-          <MainInput
-            name="temperature-output"
-            type="text"
-            onChange={onChange}
-            value={user.temperature}
-            />
-          <MainInput
-            name="name-output"
-            type="text"
-            onChange={onChange}
-            value={user.name}
-            />
         </div>
       </form>
     </div>
